@@ -33,7 +33,7 @@ class UpsampleWithGuidance(nn.Module):
 
         return out
 
-class CotGuidanceBlock(nn.Module):
+class GuidanceBlock(nn.Module):
     def __init__(self, num_feat, upscale):
         super(CotGuidanceBlock, self).__init__()
 
