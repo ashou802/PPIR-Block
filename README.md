@@ -1,4 +1,4 @@
-# PPIR Block: Generating Prior Prompt Information for Dynamic Adjustment in High-Resolution Reconstruction Process
+# PPIR Block: generate prior prompt information to dynamically adjust the high-resolution reconstruction process
 This repository is for PPIRB introduced in the following paper
 
 
@@ -25,7 +25,7 @@ einops
 5. [Acknowledgements](#acknowledgements)
 
 ## Introduction
-Super-Resolution (SR) tasks aim to reconstruct high-resolution (HR) images from low-resolution (LR) inputs. Most existing SR methods typically consist of two steps: feature extraction and high-resolution reconstruction, with research focus often placed on enhancing feature extraction capabilities. To address the issues of high-frequency information loss and insufficient global context modeling during HR reconstruction, this paper proposes a multi-scale fusion inference module called the Prior Prompt Image Restoration Block (PPIRB), which introduces a "result-prompted process."In PPIRB, we adopt a progressive guidance strategy to achieve step-wise reconstruction. For generating guidance information, we innovatively employ a prior-based approach: an approximate representation of the HR image is pre-generated before reconstruction to dynamically adjust and enhance the original process. This strategy strengthens long-range semantic dependencies, significantly improving the recovery of high-frequency details (local textures).Extensive experiments demonstrate that SR networks integrated with PPIRB achieve notable performance gains across multiple benchmark datasets at different upscaling factors, particularly in complex-texture scenarios (e.g., Urban100), where high-frequency detail retention is markedly enhanced. Local Attribution Map (LAM) and Effective Receptive Field (ERF) analyses further validate PPIRB’s effectiveness in expanding contextual perception and reinforcing correlations between distant regions.Additionally, PPIRB is a lightweight module (only 0.57M parameters) that preserves the original reconstruction pipeline’s input/output structure without disrupting the host model’s feature extraction component. It can directly replace the reconstruction module in existing SR networks.
+The goal of super‑resolution is to recover a high‑resolution (HR) image from its low‑resolution (LR) counterpart. Most existing SR approaches decompose the task into two stages: feature extraction and HR reconstruction, with a focus on enhancing feature extraction capabilities. To address the issues of high‑frequency information loss and insufficient global context modeling in high-resolution reconstruction, this paper proposes a multi‑scale fusion inference module called Priori Prompt Image Restoration Block (PPIRB), based on the “result prompt process”. In PPIRB, we adopt a step-by-step approach of adding guidance information to achieve hierarchical inference in the reconstruction process. For the generation of guidance information, a prior method is innovatively introduced to generate an approximate representation of the HR image in advance before reconstructing it, to prompt the original reconstruction process and achieve a dynamically adjusted enhancement strategy. By enhancing long-range semantic dependencies, this strategy significantly improves the recovery of high-frequency details and local structures. Extensive experimental results have shown that the super-resolution network integrated with PPIRB module has good performance improvement at different magnifications of multiple benchmark datasets, especially in complex texture scenes (such as Urban100), where the ability to preserve high-frequency details is significantly enhanced. The effectiveness of PPIRB in expanding the context aware range of the model and enhancing long-range spatial dependencies was further validated through Local Attribution Maps (LAM) and Effective Receptive Field (ERF) analysis. In addition, PPIRB is a lightweight module (with only 0.57M parameters), and it does not change the input and output of the original reconstruction process, nor does it damage the feature extraction part of the original model. It can be seamlessly integrated into or used as a direct replacement for reconstruction modules in existing super-resolution networks.
 
 ![PPIRB](/Figs/PPIRB.png)
 The architecture of  PPIR Block (PPIRB)  
@@ -110,15 +110,6 @@ We have organized the results of adding the PPIRB module on the benchmark datase
 ![ERF](/Figs/ERF.png)
 
 
-## Citation
-If you find the code helpful in your resarch or work, please cite the following papers.
-```
-@article{liang2021swinir,
-  title={SwinIR: Image Restoration Using Swin Transformer},
-  author={Liang, Jingyun and Cao, Jiezhang and Sun, Guolei and Zhang, Kai and Van Gool, Luc and Timofte, Radu},
-  journal={arXiv preprint arXiv:2108.10257},
-  year={2021}
-}
-```
+
 ## Acknowledgements
 This code is built on  [SwinIR](https://github.com/JingyunLiang/SwinIR) and [KAIR-master](https://github.com/cszn/KAIR). We thank the authors for sharing their codes.
